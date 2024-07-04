@@ -38,6 +38,8 @@ private:
 public:
     virtual void draw(Canvas& drawing) = 0;
     void set_base(unsigned int pos_x, unsigned int pos_y);
+    unsigned int get_base_x();
+    unsigned int get_base_y();
 };
 
 class Rectangle : public Figure{
@@ -57,7 +59,7 @@ private:
     unsigned int range;
 public:
     Circle() = default;
-    Circle(unsigned int base_x, unsigned int base_y, unsigned int range);
+    Circle(unsigned int centre_x, unsigned int centre_y, unsigned int range);
     ~Circle() = default;
     void draw(Canvas& drawing);
 };
