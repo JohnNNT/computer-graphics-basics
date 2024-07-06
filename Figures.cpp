@@ -14,11 +14,11 @@ Circle::Circle(unsigned int centre_x, unsigned int centre_y, unsigned int Range)
 
 void Circle::draw(Canvas& drawing)
 {
-    for(long int i = get_base_x()-range; i<=get_base_x()+range; i++)
+    for(long int i = std::max(static_cast<int>(get_base_x()-range), 0); i<=std::min(get_base_x()+range, drawing.get_width()); i++)
     {
-        for(long int j = get_base_y()-range; j<=get_base_y()+range; j++)
+        for(long int j = std::max(static_cast<int>(get_base_y()-range), 0); j<=std::min(get_base_y()+range, drawing.get_height()); j++)
         {
-            if(i>=0 && i<=drawing.get_width() && j>=0 && j<=drawing.get_height() && range*range >= ((get_base_x()-i)*(get_base_x()-i)+(get_base_y()-j)*get_base_y()-j))
+            if(((i-get_base_x())*(i-get_base_x())+(j-get_base_y())*(j-get_base_y()))<=range*range)
                 drawing.draw(monako::filled, j, i);
         }
     }
@@ -33,5 +33,17 @@ Rectangle::Rectangle(unsigned int base_x, unsigned int base_y, unsigned int Heig
 
 void Rectangle::draw(Canvas& drawing)
 {
+    for(int i = get_base_x(); i<=std::min(drawing.get_width(), get_base_x()+width); i++)
+        for(int j = get_base_y(); j<=std::min(drawing.get_height(), get_base_y()+height);j++)
+            drawing.draw(monako::filled, j, i);
+}
 
+const unsigned int Figure::get_base_x() noexcept
+{
+    return base_x;
+}
+
+const unsigned int Figure::get_base_y() noexcept
+{
+    return base_y;
 }

@@ -18,7 +18,7 @@ public:
     void set_size(unsigned int height, unsigned int width);
     const unsigned int get_height() noexcept;
     const unsigned int get_width() noexcept;
-    monako get_drawing(unsigned int pos_x, unsigned int pos_y) noexcept;
+    monako get_drawing(unsigned int pos_x, unsigned int pos_y);
     virtual void print() = 0;
     void draw(monako object, unsigned int base_pos_x, unsigned int base_pos_y);
 };
@@ -38,8 +38,8 @@ private:
 public:
     virtual void draw(Canvas& drawing) = 0;
     void set_base(unsigned int pos_x, unsigned int pos_y);
-    unsigned int get_base_x();
-    unsigned int get_base_y();
+    const unsigned int get_base_x() noexcept;
+    const unsigned int get_base_y() noexcept;
 };
 
 class Rectangle : public Figure{

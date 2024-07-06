@@ -13,15 +13,7 @@ void Canvas::set_size(unsigned int height, unsigned int width)
     max_x = width;
     max_y = height;
 
-    drawings.reserve(height);
-    for(auto& row : drawings)
-    {
-        row.reserve(width);
-        for(int i = 0; i < width; i++)
-        {
-            row.push_back(monako::empty);
-        }
-    }
+    drawings.assign(height, std::vector<monako>(width, monako::empty));
 }
 
 void Canvas::draw(monako object, unsigned int pos_x, unsigned int pos_y)
@@ -71,7 +63,17 @@ void ASCIICanvas::print()
 }
 
 
-monako Canvas::get_drawing(unsigned int pos_x, unsigned int pos_y) noexcept
+monako Canvas::get_drawing(unsigned int pos_x, unsigned int pos_y)
 {
     return drawings[pos_y][pos_x];
+}
+
+const unsigned int Canvas::get_width() noexcept
+{
+    return max_x;
+}
+
+const unsigned int Canvas::get_height() noexcept
+{
+    return max_y;
 }
