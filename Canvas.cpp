@@ -13,10 +13,10 @@ void Canvas::set_size(unsigned int height, unsigned int width)
     max_x = width;
     max_y = height;
 
-    drawings.assign(height, std::vector<monako>(width, monako::empty));
+    drawings.assign(height, std::vector<pointState>(width, pointState::empty));
 }
 
-void Canvas::draw(monako object, unsigned int pos_x, unsigned int pos_y)
+void Canvas::draw(pointState object, unsigned int pos_x, unsigned int pos_y)
 {
     drawings[pos_y][pos_x] = object;
 }
@@ -36,13 +36,13 @@ void ASCIICanvas::print()
         {
             switch(this->get_drawing(j, i))
             {
-                case monako::empty:
+                case pointState::empty:
                     std::cout << ' ';
                     break;
-                case monako::filled:
+                case pointState::filled:
                     std::cout << '#';
                     break;
-                case monako::shadow:
+                case pointState::shadow:
                     std::cout << '*';
                     break;
                 default:
@@ -63,7 +63,7 @@ void ASCIICanvas::print()
 }
 
 
-monako Canvas::get_drawing(unsigned int pos_x, unsigned int pos_y)
+pointState Canvas::get_drawing(unsigned int pos_x, unsigned int pos_y)
 {
     return drawings[pos_y][pos_x];
 }

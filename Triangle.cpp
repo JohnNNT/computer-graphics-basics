@@ -97,7 +97,7 @@ void Triangle::draw(Canvas &drawing)
             {
                 if(static_cast<double>(j)>=left_to_centre.result_from_x(i) && static_cast<double>(j)<=left_to_right.result_from_x(i))
                 {
-                    drawing.draw(monako::filled, i, j);
+                    drawing.draw(pointState::filled, i, j);
                 }
             }
 
@@ -106,7 +106,7 @@ void Triangle::draw(Canvas &drawing)
             {
                 if(static_cast<double>(j)>=left_to_centre.result_from_x(i) && static_cast<double>(j)<=left_to_right.result_from_x(i))
                 {
-                    drawing.draw(monako::filled, i, j);
+                    drawing.draw(pointState::filled, i, j);
                 }
             }
     }
@@ -117,7 +117,7 @@ void Triangle::draw(Canvas &drawing)
             {
                 if(static_cast<double>(j)>=left_to_right.result_from_x(i) && static_cast<double>(j)<=left_to_centre.result_from_x(i))
                 {
-                    drawing.draw(monako::filled, i,j);
+                    drawing.draw(pointState::filled, i,j);
                 }
             }
         }
@@ -128,7 +128,7 @@ void Triangle::draw(Canvas &drawing)
             {
                 if(static_cast<double>(j)>=left_to_right.result_from_x(i) && static_cast<double>(j)<=right_to_centre.result_from_x(i))
                 {
-                    drawing.draw(monako::filled, i,j);
+                    drawing.draw(pointState::filled, i,j);
                 }
             }
         }

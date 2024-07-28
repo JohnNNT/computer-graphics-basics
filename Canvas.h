@@ -7,7 +7,7 @@
 
 #include "ConfigFile.h"
 
-enum class monako{
+enum class pointState{
     empty,
     filled,
     shadow,
@@ -17,14 +17,14 @@ class Canvas{
 private:
     unsigned int max_y;
     unsigned int max_x;
-    std::vector<std::vector<monako>> drawings;
+    std::vector<std::vector<pointState>> drawings;
 public:
     void set_size(unsigned int height, unsigned int width);
     const unsigned int get_height() noexcept;
     const unsigned int get_width() noexcept;
-    monako get_drawing(unsigned int pos_x, unsigned int pos_y);
+    pointState get_drawing(unsigned int pos_x, unsigned int pos_y);
     virtual void print() = 0;
-    void draw(monako object, unsigned int base_pos_x, unsigned int base_pos_y);
+    void draw(pointState object, unsigned int base_pos_x, unsigned int base_pos_y);
 };
 
 class ASCIICanvas : public Canvas{
